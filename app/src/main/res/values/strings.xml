@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">kalemApp</string>
+
+    <string-array name="medeni_hal">
+        <item>Evli</item>
+        <item>Bekar</item>
+    </string-array>
 </resources>

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -13,7 +14,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -46,5 +47,20 @@ dependencies {
     // circilur image view için kütüphane
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    // event bus kütüphanesi aktiviler arası veri aktarımı
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
+    // ilgili firebase implementasyonları
+    implementation platform('com.google.firebase:firebase-bom:28.1.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // firebase auth implementation
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
+    // firebase ui auth
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+
+    // multidex
+    implementation 'androidx.multidex:multidex:2.0.1'
 
 }
