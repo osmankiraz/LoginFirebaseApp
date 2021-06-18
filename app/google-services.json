@@ -1,41 +1,71 @@
 {
   "project_info": {
-    "project_number": "690777089628",
-    "project_id": "kalemfirebase",
-    "storage_bucket": "kalemfirebase.appspot.com"
+    "project_number": "1048018510892",
+    "firebase_url": "https://loginregister-a0b74-default-rtdb.firebaseio.com",
+    "project_id": "loginregister-a0b74",
+    "storage_bucket": "loginregister-a0b74.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:690777089628:android:3d819a8e184817e898a899",
+        "mobilesdk_app_id": "1:1048018510892:android:ba7eb98da42d527c1d9d89",
         "android_client_info": {
           "package_name": "com.osman.kalemapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "690777089628-pboe25741d9qgq57krb836v1klp48fl9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.osman.kalemapp",
-            "certificate_hash": "88c8ea7b04518296e728d238d988029539f72154"
-          }
-        },
-        {
-          "client_id": "690777089628-6otbuhe0rroev40lh3rvfipnjk6pg9sa.apps.googleusercontent.com",
+          "client_id": "1048018510892-doilpo5ln6ud0fges0okf4c6cslt3445.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDDYLirqdgN6SRqYDPnjk5lbH6hEC66r-Q"
+          "current_key": "AIzaSyASI5JfU74dstCfanaXuYvL4gfz6d1a57I"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "690777089628-6otbuhe0rroev40lh3rvfipnjk6pg9sa.apps.googleusercontent.com",
+              "client_id": "1048018510892-doilpo5ln6ud0fges0okf4c6cslt3445.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048018510892:android:348770201a35ff7a1d9d89",
+        "android_client_info": {
+          "package_name": "com.osman.kirazapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048018510892-fdl70t5vf8dn17orptto7nhvk1ioru9t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.osman.kirazapp",
+            "certificate_hash": "88c8ea7b04518296e728d238d988029539f72154"
+          }
+        },
+        {
+          "client_id": "1048018510892-doilpo5ln6ud0fges0okf4c6cslt3445.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASI5JfU74dstCfanaXuYvL4gfz6d1a57I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048018510892-doilpo5ln6ud0fges0okf4c6cslt3445.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

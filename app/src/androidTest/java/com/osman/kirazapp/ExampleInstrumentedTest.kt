@@ -1,4 +1,4 @@
-package com.osman.kalemapp
+package com.osman.kirazapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,8 +1,7 @@
-package com.osman.kalemapp
+package com.osman.kirazapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
 
 
 class MainActivity : AppCompatActivity() {

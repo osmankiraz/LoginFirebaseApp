@@ -10,5 +10,11 @@
     <color name="kalem_mavisi">#009dc5</color>
     <color name="golgelik">#dbdbdb</color>
     <color name="toolbar_color">#fafafa</color>
+    <color name="siyah">#000</color>
+    <color name="beyaz">#FFF</color>
+    <color name="mavi">#3997f0</color>
+    <color name="sonukmavi">#643997f0</color>
+    <color name="kirmizi">#fe0000</color>
+    <color name="gri">#747474</color>
 
 </resources>

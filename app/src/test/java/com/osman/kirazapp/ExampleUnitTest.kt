@@ -1,4 +1,4 @@
-package com.osman.kalemapp
+package com.osman.kirazapp
 
 import org.junit.Test
 
