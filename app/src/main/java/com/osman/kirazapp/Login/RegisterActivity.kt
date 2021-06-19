@@ -35,9 +35,11 @@ class RegisterActivity : AppCompatActivity() {
 
     lateinit var cinsiyetString: String
     lateinit var medeniHalString: String
+    lateinit var yasString: String
 
-    lateinit var mAuth:FirebaseAuth
-    lateinit var mRef:DatabaseReference
+    lateinit var mAuth: FirebaseAuth
+    lateinit var mRef: DatabaseReference
+    lateinit var mAuthListener:FirebaseAuth.AuthStateListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,35 +53,23 @@ class RegisterActivity : AppCompatActivity() {
         sifreET = findViewById(R.id.etRegisterPassWord)
         adSoyadET = findViewById(R.id.etRegisterName)
         yasET = findViewById(R.id.etYas)
+        yasString = yasET.text.toString()
 
-        var database=FirebaseDatabase.getInstance().reference
-        database.setValue(Users("asdasw","asdads","adasd","asdds","adasd","asddsa","asdasdad"))
+        cinsiyetString = "belirtilmedi"
+        yasString=""
 
-        mAuth= FirebaseAuth.getInstance()
-        mRef= FirebaseDatabase.getInstance().reference
+        setupAuthListener()
+        mAuth = FirebaseAuth.getInstance()
+        mRef = FirebaseDatabase.getInstance().reference
 
 
-
-            // watcher tanımlamaları
+        // watcher tanımlamaları
         emailET.addTextChangedListener(watcher)
         sifreET.addTextChangedListener(watcher)
         adSoyadET.addTextChangedListener(watcher)
 
 
 
-
-
-
-//        if(mAuth.currentUser != null){
-//            mAuth.signOut()
-//        }
-
-        // kayıt butonuna basılınca olacaklar
-//        buttonKayıt.setOnClickListener {
-//
-//
-//
-//        }
 
 
         adapter = ArrayAdapter.createFromResource(
@@ -98,12 +88,7 @@ class RegisterActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                Toast.makeText(
-                    this@RegisterActivity,
-                    "you selected ${parent!!.getItemAtPosition(position).toString()}",
-                    Toast.LENGTH_LONG
-                ).show()
-                medeniHalString = parent.getItemAtPosition(position).toString()
+                medeniHalString = parent!!.getItemAtPosition(position).toString()
                 Log.e("osmankiraz123", "medeni hal seçildi " + medeniHalString)
 
             }
@@ -119,6 +104,7 @@ class RegisterActivity : AppCompatActivity() {
 
     // WATCHER
     var watcher: TextWatcher = object : TextWatcher {
+
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
         }
@@ -168,20 +154,15 @@ class RegisterActivity : AppCompatActivity() {
         if (view is RadioButton) {
             // Is the button now checked?
             val checked = view.isChecked
-
             // Check which radio button was clicked
             when (view.getId()) {
                 R.id.rbErkek ->
                     if (checked) {
                         cinsiyetString = "erkek"
-                        Log.e("osmankiraz123", "erkek seçildi" + cinsiyetString)
-
-
                     }
                 R.id.rbKadin ->
                     if (checked) {
                         cinsiyetString = "kadin"
-                        Log.e("osmankiraz123", "kadın seçildi" + cinsiyetString)
                     }
             }
         }
@@ -195,71 +176,129 @@ class RegisterActivity : AppCompatActivity() {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(kontrolEdilecekEmail).matches()
     }
 
-    fun kayitButonu(view: View){
-        var gelenEmail=emailET.text.toString()
-        var sifre =sifreET.text.toString()
-        var adiSoyadi=adSoyadET.text.toString()
-        var yas=yasET.text.toString()
+    // KAYIT BUTONUNA BASILINCA OLACAKLAR
+    fun kayitButonu(view: View) {
+        var gelenEmail = emailET.text.toString()
+        var sifre = sifreET.text.toString()
+        var adiSoyadi = adSoyadET.text.toString()
+        var yas = yasET.text.toString()
 
         //cinsiyetString
         //medeniHalString
 
         if (isValidEmail(gelenEmail)) {
 
-
-
-            mRef.setValue(Users("asdasw","asdads","adasd","asdds","adasd","asddsa","asdasdad"))
             //var credential=EmailAuthProvider.getCredential(emailET.text.toString(),sifreET.text.toString())
-            mAuth.createUserWithEmailAndPassword(gelenEmail,sifre)
-                .addOnCompleteListener(object :OnCompleteListener<AuthResult>{
+            mAuth.createUserWithEmailAndPassword(gelenEmail, sifre)
+                .addOnCompleteListener(object : OnCompleteListener<AuthResult> {
                     override fun onComplete(p0: Task<AuthResult>) {
-                        if (p0!!.isSuccessful){
-                            Toast.makeText(this@RegisterActivity, "Kullanıcı oluşturuldu", Toast.LENGTH_SHORT).show()
-                            var userID=mAuth.currentUser!!.uid.toString()
-                            var kaydedilecekKullanici=Users(gelenEmail,sifre,adiSoyadi,yas,cinsiyetString,medeniHalString,userID)
-                            Log.e("osmankiraz123","kaydedilecek kullanıcı:: $kaydedilecekKullanici")
-
-                            Log.e("osmankiraz123","almaya çalıştığımız userıd::  $userID")
-
-
-
+                        if (p0!!.isSuccessful) {
+                            Toast.makeText(
+                                this@RegisterActivity,
+                                "Kullanıcı oluşturuldu",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            var userID = mAuth.currentUser!!.uid.toString()
+                            var kaydedilecekKullanici = Users(
+                                gelenEmail,
+                                sifre,
+                                adiSoyadi,
+                                yas,
+                                cinsiyetString,
+                                medeniHalString,
+                                userID
+                            )
+                            Log.e(
+                                "osmankiraz123",
+                                "kaydedilecek kullanıcı:: $kaydedilecekKullanici"
+                            )
+                            Log.e("osmankiraz123", "almaya çalıştığımız userıd::  $userID")
                             mRef.child("users").child(userID).setValue(kaydedilecekKullanici)
-                                .addOnCompleteListener(object:OnCompleteListener<Void>{
+                                .addOnCompleteListener(object : OnCompleteListener<Void> {
                                     override fun onComplete(p0: Task<Void>) {
-                                        if(p0!!.isSuccessful){
-                                            Log.e("osmankiraz123","kullanıcı database kaydedildi")
-                                            val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
+                                        if (p0!!.isSuccessful) {
+                                            Log.e(
+                                                "osmankiraz123",
+                                                "kullanıcı database kaydedildi ve yeni intent başlatıldı"
+                                            )
+                                            val intent = Intent(
+                                                this@RegisterActivity,
+                                                HomeActivity::class.java
+                                            )
                                             startActivity(intent)
-                                        }else{
-                                            Log.e("osmankiraz123","kullanıcı kaydedilirken hata oluştu hata sebebi ${p0!!.exception}")
+                                        } else {
+                                            mAuth.currentUser!!.delete().addOnCompleteListener(object :OnCompleteListener<Void>{
+                                                override fun onComplete(p0: Task<Void>) {
+                                                    Log.e(
+                                                        "osmankiraz123",
+                                                        " kullanıcı kaydedilirken hata oluştu ve mAuth Silindi hata sebebi ${p0!!.exception}"
+                                                    )
+                                                    Toast.makeText(this@RegisterActivity,"Kullanıcı Kaydedilemedi",Toast.LENGTH_SHORT).show()
+
+                                                }
+
+                                            })
+
                                         }
                                     }
-                                }).addOnFailureListener(object:OnFailureListener{
+                                }).addOnFailureListener(object : OnFailureListener {
                                     override fun onFailure(p0: Exception) {
-                                        Log.e("osmankiraz123","kullanıcı kaydedilirken hata oluştu hata sebebi "+p0.toString())
-
+                                        Log.e(
+                                            "osmankiraz123",
+                                            "kullanıcı kaydedilirken hata oluştu hata sebebi " + p0.toString()
+                                        )
                                     }
-
                                 })
 
-                            Log.e("osmankiraz123","onCompleteListerner sonu")
+                            Log.e("osmankiraz123", "onCompleteListerner sonu")
 
 
-                        }else{
-                            Toast.makeText(this@RegisterActivity, "Kullanıcı oluşturulamadı"+p0!!.exception, Toast.LENGTH_SHORT).show()
-                            Log.e("osmankiraz123","hata şu"+p0.exception)
+                        } else {
+                            Toast.makeText(
+                                this@RegisterActivity,
+                                "Kullanıcı oluşturulamadı" + p0!!.exception,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            Log.e("osmankiraz123", "hata şu" + p0.exception)
                         }
                     }
 
                 })
 
 
-
-
         } else {
             Toast.makeText(this, "Lütfen geçerli email giriniz", Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    private fun setupAuthListener() {
+        mAuthListener=object : FirebaseAuth.AuthStateListener{
+            override fun onAuthStateChanged(p0: FirebaseAuth) {
+                var user=FirebaseAuth.getInstance().currentUser
+                if(user != null){
+                    var intent=Intent(this@RegisterActivity,HomeActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+                }else{
+
+                }
+
+            }
+
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mAuth.addAuthStateListener(mAuthListener)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if(mAuthListener != null){
+            mAuth.removeAuthStateListener(mAuthListener)
+        }
     }
 
 

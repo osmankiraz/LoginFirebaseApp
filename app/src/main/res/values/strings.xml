@@ -2,8 +2,8 @@
     <string name="app_name">kalemApp</string>
 
     <string-array name="medeni_hal">
-        <item>Bekar</item>
-        <item>Evli</item>
+        <item>bekar</item>
+        <item>evli</item>
     </string-array>
     <string name="title_activity_scrolling">Kullanıcı Sözleşmesi</string>
     <string name="large_text">
