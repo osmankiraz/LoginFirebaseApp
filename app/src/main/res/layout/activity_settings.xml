@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutSettings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login.SettingsActivity">
+
+    <Button
+        android:id="@+id/btnDuzenle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/register_button"
+
+        android:enabled="true"
+        android:text="Düzenle"
+        android:textColor="@color/sonukmavi"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroupSettings"
+        app:layout_constraintStart_toStartOf="@+id/radioGroupSettings"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupSettings" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cinsiyet"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/radioGroupSettings"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="@+id/radioGroupSettings" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medeni Hal"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/spnMedeniHalSettings"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/spnMedeniHalSettings" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:text="E-Posta"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etEmailSettings"
+        app:layout_constraintEnd_toStartOf="@+id/etEmailSettings"
+        app:layout_constraintTop_toTopOf="@+id/etEmailSettings" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/spnMedeniHalSettings"
+        app:layout_constraintStart_toStartOf="@+id/spnMedeniHalSettings"
+        app:layout_constraintTop_toBottomOf="@+id/spnMedeniHalSettings">
+
+        <RadioButton
+            android:id="@+id/rbKadinSt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Kadın"
+            app:layout_constraintBottom_toBottomOf="@+id/radioGroup"
+            app:layout_constraintStart_toEndOf="@+id/rbErkek"
+            app:layout_constraintTop_toTopOf="@+id/radioGroup" />
+
+        <RadioButton
+            android:id="@+id/rbErkekSt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Erkek"
+            app:layout_constraintBottom_toBottomOf="@+id/radioGroup"
+            app:layout_constraintStart_toStartOf="@+id/radioGroup"
+            app:layout_constraintTop_toTopOf="@+id/radioGroup" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/etPasswordSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/registor_edit_text"
+        android:ems="10"
+        android:hint="Şifre"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/etEmailSettings"
+        app:layout_constraintStart_toStartOf="@+id/etEmailSettings"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailSettings" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yaş"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etYasSettings"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/etYasSettings" />
+
+    <EditText
+        android:id="@+id/etNameSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/registor_edit_text"
+        android:ems="10"
+        android:hint="Ad Soyad"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/etPasswordSettings"
+        app:layout_constraintStart_toStartOf="@+id/etPasswordSettings"
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordSettings" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Şifre"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etPasswordSettings"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toTopOf="@+id/etPasswordSettings" />
+
+    <EditText
+        android:id="@+id/etYasSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/registor_edit_text"
+        android:ems="10"
+        android:hint="Yaş"
+        android:inputType="date"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/etNameSettings"
+        app:layout_constraintStart_toStartOf="@+id/etNameSettings"
+        app:layout_constraintTop_toBottomOf="@+id/etNameSettings" />
+
+    <EditText
+        android:id="@+id/etEmailSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:background="@drawable/registor_edit_text"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spnMedeniHalSettings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/registor_edit_text"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/etYasSettings"
+        app:layout_constraintStart_toStartOf="@+id/etYasSettings"
+        app:layout_constraintTop_toBottomOf="@+id/etYasSettings" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ad,Soyad"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etNameSettings"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="@+id/etNameSettings" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

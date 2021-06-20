@@ -53,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
         sifreET = findViewById(R.id.etRegisterPassWord)
         adSoyadET = findViewById(R.id.etRegisterName)
         yasET = findViewById(R.id.etYas)
-        yasString = yasET.text.toString()
+        //yasString = yasET.text.toString()
 
         cinsiyetString = "belirtilmedi"
         yasString=""
@@ -158,11 +158,11 @@ class RegisterActivity : AppCompatActivity() {
             when (view.getId()) {
                 R.id.rbErkek ->
                     if (checked) {
-                        cinsiyetString = "erkek"
+                        cinsiyetString = "Erkek"
                     }
                 R.id.rbKadin ->
                     if (checked) {
-                        cinsiyetString = "kadin"
+                        cinsiyetString = "Kadın"
                     }
             }
         }

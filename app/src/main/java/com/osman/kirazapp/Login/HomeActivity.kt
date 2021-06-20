@@ -13,6 +13,7 @@ import com.osman.kirazapp.R
 class HomeActivity : AppCompatActivity() {
     lateinit var iconSozlesme:ImageView
     lateinit var iconCikis:ImageView
+    lateinit var iconSettings:ImageView
 
     lateinit var mAuth: FirebaseAuth
     lateinit var mAuthListener:FirebaseAuth.AuthStateListener
@@ -22,6 +23,7 @@ class HomeActivity : AppCompatActivity() {
 
         iconSozlesme=findViewById(R.id.iconContract)
         iconCikis=findViewById(R.id.iconExit)
+        iconSettings=findViewById(R.id.iconSettings)
 
         mAuth = FirebaseAuth.getInstance()
         mAuth.currentUser
@@ -35,6 +37,10 @@ class HomeActivity : AppCompatActivity() {
         }
         iconCikis.setOnClickListener{
             mAuth.signOut()
+        }
+        iconSettings.setOnClickListener {
+            val intent = Intent(this@HomeActivity,SettingsActivity::class.java)
+            startActivity(intent)
         }
 
 

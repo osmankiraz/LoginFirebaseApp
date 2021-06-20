@@ -3,30 +3,30 @@
     package="com.osman.kirazapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.KalemApp">
-
+        android:theme="@style/Theme.KalemApp"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Login.SettingsActivity"></activity>
         <activity
-            android:name="com.osman.kirazapp.Login.ScrollingActivity"
+            android:name=".Login.ScrollingActivity"
             android:label="@string/title_activity_scrolling"
-            android:theme="@style/Theme.KalemApp.NoActionBar"></activity>
-        <activity android:name="com.osman.kirazapp.Login.HomeActivity" />
-        <activity android:name="com.osman.kirazapp.Login.RegisterActivity" />
-        <activity android:name="com.osman.kirazapp.Login.LoginActivity">
+            android:theme="@style/Theme.KalemApp.NoActionBar" />
+        <activity android:name=".Login.HomeActivity" />
+        <activity android:name=".Login.RegisterActivity" />
+        <activity android:name=".Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.osman.kirazapp.MainActivity" />
-
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
