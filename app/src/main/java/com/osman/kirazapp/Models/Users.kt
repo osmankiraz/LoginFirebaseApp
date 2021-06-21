@@ -8,6 +8,7 @@ class Users {
     var gender:String?=null
     var merital_status:String?=null
     var user_id:String?=null
+    var verified:String="false"
 
     constructor(){}
     constructor(
@@ -17,7 +18,8 @@ class Users {
         age: String?,
         gender: String?,
         merital_status: String?,
-        user_id: String?
+        user_id: String?,
+        verified: String
     ) {
         this.email = email
         this.password = password
@@ -26,6 +28,7 @@ class Users {
         this.gender = gender
         this.merital_status = merital_status
         this.user_id = user_id
+        this.verified = verified
     }
 
 

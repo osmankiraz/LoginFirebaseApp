@@ -219,8 +219,8 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            if (s!!.length > 5) {
-                if (etEmail.text.toString().length > 5 && etName.text.toString().length > 5 && etPassword.text.toString().length > 5) {
+            if (s!!.length > 4) {
+                if (etEmail.text.toString().length > 4 && etName.text.toString().length > 4 && etPassword.text.toString().length > 4) {
                     buttonDuzenle.isEnabled = true
                     buttonDuzenle.setTextColor(
                         ContextCompat.getColor(

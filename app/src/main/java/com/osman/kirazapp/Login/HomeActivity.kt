@@ -5,15 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.osman.kirazapp.R
+import com.osman.kirazapp.admin.UserListActivity
 
 class HomeActivity : AppCompatActivity() {
     lateinit var iconSozlesme:ImageView
     lateinit var iconCikis:ImageView
     lateinit var iconSettings:ImageView
+    lateinit var tvDeneme:TextView
 
     lateinit var mAuth: FirebaseAuth
     lateinit var mAuthListener:FirebaseAuth.AuthStateListener
@@ -24,6 +27,7 @@ class HomeActivity : AppCompatActivity() {
         iconSozlesme=findViewById(R.id.iconContract)
         iconCikis=findViewById(R.id.iconExit)
         iconSettings=findViewById(R.id.iconSettings)
+        tvDeneme=findViewById(R.id.tvAyar)
 
         mAuth = FirebaseAuth.getInstance()
         mAuth.currentUser
@@ -42,6 +46,8 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this@HomeActivity,SettingsActivity::class.java)
             startActivity(intent)
         }
+
+
 
 
 

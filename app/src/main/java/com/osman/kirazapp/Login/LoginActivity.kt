@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.osman.kirazapp.Models.Users
 import com.osman.kirazapp.R
+import com.osman.kirazapp.admin.UserListActivity
 
 class LoginActivity : AppCompatActivity() {
     lateinit var tvKaydol:TextView
@@ -70,26 +71,35 @@ class LoginActivity : AppCompatActivity() {
 
     private fun oturumAcacakKullaniciDenetle(emailP: String, sifreP: String) {
 
-        mRef.child("users").orderByChild("email").addListenerForSingleValueEvent(object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (ds in snapshot!!.children){
-                    var okunanKullanici=ds.getValue(Users::class.java)
-                    if (okunanKullanici!!.email.equals(emailP)){
-                        oturumAc(okunanKullanici,sifreP)
-                        break
-                    }else{
-                        Toast.makeText(this@LoginActivity,"Mail bulunamadı ",Toast.LENGTH_SHORT).show()
+        if(emailP.equals("admin") && sifreP.equals("admin")){
+            var intent =Intent(this,UserListActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }else{
+            mRef.child("users").orderByChild("email").addListenerForSingleValueEvent(object :ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (ds in snapshot!!.children){
+                        var okunanKullanici=ds.getValue(Users::class.java)
+                        if (okunanKullanici!!.email.equals(emailP)){
+                            oturumAc(okunanKullanici,sifreP)
+                            break
+                        }else{
+                            //Toast.makeText(this@LoginActivity,"Mail bulunamadı ",Toast.LENGTH_SHORT).show()
+                        }
                     }
+
                 }
 
-            }
-
-            override fun onCancelled(error: DatabaseError) {
+                override fun onCancelled(error: DatabaseError) {
 
 
-            }
+                }
 
-        })
+            })
+        }
+
+
+
+
 
     }
 
@@ -117,7 +127,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            if(etEmail.text.toString().length>=6 && etPassword.text.toString().length>=6){
+            if(etEmail.text.toString().length>=4 && etPassword.text.toString().length>=4){
                 btnGiris.isEnabled=true
                 btnGiris.setTextColor(
                     ContextCompat.getColor(

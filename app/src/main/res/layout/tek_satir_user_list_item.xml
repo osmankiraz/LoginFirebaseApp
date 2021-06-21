@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/userListLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/userListContraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+        <TextView
+            android:id="@+id/tvEmailUserList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="e@emial.com"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvEmailUserList4"
+            app:layout_constraintStart_toEndOf="@+id/tvEmailUserList4"
+            app:layout_constraintTop_toTopOf="@+id/tvEmailUserList4" />
+
+        <TextView
+            android:id="@+id/tvEmailUserList4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="E- Mail :"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvAdSoyadUserList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ad-soyad"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAdSoyadUserList2"
+            app:layout_constraintStart_toEndOf="@+id/tvAdSoyadUserList2"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmailUserList4" />
+
+        <TextView
+            android:id="@+id/tvAdSoyadUserList2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adı Soyadı :"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tvEmailUserList4"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmailUserList4" />
+
+        <TextView
+            android:id="@+id/tvYasUserList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yaş"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvYasUserList4"
+            app:layout_constraintStart_toEndOf="@+id/tvYasUserList4"
+            app:layout_constraintTop_toTopOf="@+id/tvYasUserList4" />
+
+        <TextView
+            android:id="@+id/tvYasUserList4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yaş :"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tvAdSoyadUserList2"
+            app:layout_constraintTop_toBottomOf="@+id/tvAdSoyadUserList2" />
+
+        <TextView
+            android:id="@+id/tvCinsiyetUserList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cinsiyet"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCinsiyetUserList2"
+            app:layout_constraintStart_toEndOf="@+id/tvCinsiyetUserList2"
+            app:layout_constraintTop_toTopOf="@+id/tvCinsiyetUserList2" />
+
+        <TextView
+            android:id="@+id/tvCinsiyetUserList2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cinsiyet :"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tvYasUserList4"
+            app:layout_constraintTop_toBottomOf="@+id/tvYasUserList4" />
+
+        <TextView
+            android:id="@+id/tvMedeniHalUserList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MedeniHal"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvMedeniHalUserList2"
+            app:layout_constraintStart_toEndOf="@+id/tvMedeniHalUserList2"
+            app:layout_constraintTop_toTopOf="@+id/tvMedeniHalUserList2" />
+
+        <TextView
+            android:id="@+id/tvMedeniHalUserList2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medeni Hal :"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/tvCinsiyetUserList2"
+            app:layout_constraintTop_toBottomOf="@+id/tvCinsiyetUserList2" />
+
+        <Button
+            android:id="@+id/btnOnayla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:text="onayla"
+            app:layout_constraintBottom_toBottomOf="@+id/tvMedeniHalUserList2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvEmailUserList4" />
+
+        <View
+            android:id="@+id/golgelik1"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/golgelik"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMedeniHalUserList2">
+
+        </View>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -55,7 +55,7 @@ class RegisterActivity : AppCompatActivity() {
         yasET = findViewById(R.id.etYas)
         //yasString = yasET.text.toString()
 
-        cinsiyetString = "belirtilmedi"
+        cinsiyetString = "Erkek"
         yasString=""
 
         setupAuthListener()
@@ -110,8 +110,8 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            if (s!!.length > 5) {
-                if (emailET.text.toString().length > 5 && adSoyadET.text.toString().length > 5 && sifreET.text.toString().length > 5) {
+            if (s!!.length > 4) {
+                if (emailET.text.toString().length > 4 && adSoyadET.text.toString().length > 4 && sifreET.text.toString().length > 4) {
                     buttonKayıt.isEnabled = true
                     buttonKayıt.setTextColor(
                         ContextCompat.getColor(
@@ -206,7 +206,8 @@ class RegisterActivity : AppCompatActivity() {
                                 yas,
                                 cinsiyetString,
                                 medeniHalString,
-                                userID
+                                userID,
+                                "false"
                             )
                             Log.e(
                                 "osmankiraz123",
@@ -234,11 +235,8 @@ class RegisterActivity : AppCompatActivity() {
                                                         " kullanıcı kaydedilirken hata oluştu ve mAuth Silindi hata sebebi ${p0!!.exception}"
                                                     )
                                                     Toast.makeText(this@RegisterActivity,"Kullanıcı Kaydedilemedi",Toast.LENGTH_SHORT).show()
-
                                                 }
-
                                             })
-
                                         }
                                     }
                                 }).addOnFailureListener(object : OnFailureListener {
@@ -249,10 +247,7 @@ class RegisterActivity : AppCompatActivity() {
                                         )
                                     }
                                 })
-
                             Log.e("osmankiraz123", "onCompleteListerner sonu")
-
-
                         } else {
                             Toast.makeText(
                                 this@RegisterActivity,
@@ -262,14 +257,10 @@ class RegisterActivity : AppCompatActivity() {
                             Log.e("osmankiraz123", "hata şu" + p0.exception)
                         }
                     }
-
                 })
-
-
         } else {
             Toast.makeText(this, "Lütfen geçerli email giriniz", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     private fun setupAuthListener() {
